@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, FotodenunciasActivity!</string>
+    <string name="app_name">Fotodenuncias</string>
+    <string name="strings">vamos</string>
+    <string name="fotodenuncias">fotodenuncias.net</string>
+    <string name="publicar_nueva_denuncia">Publicar una nueva denuncia</string>
+    <string name="description">Descripción de la noticia:</string>
+    <string name="descrip_denun">Descripción de la denuncia:</string>
+    <string name="imagen_denuncia">Imagen de la denuncia:</string>
+    <string name="elegir_img">Elegir imagen</string>
+    <string name="publicar_den">Publicar la fotodenuncia</string>
+    <string name="vacio"></string>
+    <string name="by_joan16v">v0.1 @joan16v</string>
+    <color name="white">#FFFFFF</color>
+    <string name="v02">v0.2 @joan16v</string>
+    <string name="v04">v0.4 @joan16v</string>
+
+</resources>
