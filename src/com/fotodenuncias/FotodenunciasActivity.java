@@ -77,8 +77,7 @@ public class FotodenunciasActivity extends Activity {
 
         boton.setOnClickListener(new OnClickListener() {
             public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_PICK,
-                         android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(intent, 0);
             }
         });
@@ -95,7 +94,6 @@ public class FotodenunciasActivity extends Activity {
                            });
                     builder.show();
                 } else {
-
                     cajaDeTexto.setEnabled(false);
                     boton2.setEnabled(false);
                     boton2.setText("Publicando...");
@@ -138,7 +136,7 @@ public class FotodenunciasActivity extends Activity {
          if (resultCode == RESULT_OK) {
             Uri targetUri = data.getData();
             String pathReal = getRealPathFromURI(targetUri);
-            nombreImagen=pathReal;
+            nombreImagen = pathReal;
             logText.setText(nombreImagen);
             boton.setText("Imagen elegida.");
             boton.setEnabled(false);
@@ -167,7 +165,7 @@ public class FotodenunciasActivity extends Activity {
         String boundary =  "*****";
         int bytesRead, bytesAvailable, bufferSize;
         byte[] buffer;
-        int maxBufferSize = 1*1024*1024;
+        int maxBufferSize = 1 * 1024 * 1024;
 
         try {
             FileInputStream fileInputStream = new FileInputStream(new File(pathToOurFile));
@@ -181,7 +179,7 @@ public class FotodenunciasActivity extends Activity {
             connection.setRequestProperty("Content-Type", "multipart/form-data;boundary=" + boundary);
             outputStream = new DataOutputStream( connection.getOutputStream() );
             outputStream.writeBytes(twoHyphens + boundary + lineEnd);
-            outputStream.writeBytes("Content-Disposition: form-data; name=\"uploadedfile\";filename=\"" + pathToOurFile +"\"" + lineEnd);
+            outputStream.writeBytes("Content-Disposition: form-data; name=\"uploadedfile\";filename=\"" + pathToOurFile + "\"" + lineEnd);
             outputStream.writeBytes(lineEnd);
             bytesAvailable = fileInputStream.available();
             bufferSize = Math.min(bytesAvailable, maxBufferSize);
@@ -214,12 +212,12 @@ public class FotodenunciasActivity extends Activity {
             List<NameValuePair> params = new ArrayList<NameValuePair>();
             params.add(new BasicNameValuePair("descripcion", cajaDeTexto.getText().toString() ));
             params.add(new BasicNameValuePair("nombreImagen", nombreImagen ));
-            UrlEncodedFormEntity ent = new UrlEncodedFormEntity(params,HTTP.UTF_8);
+            UrlEncodedFormEntity ent = new UrlEncodedFormEntity(params, HTTP.UTF_8);
             post.setEntity(ent);
             HttpResponse responsePOST = client.execute(post);
             HttpEntity resEntity = responsePOST.getEntity();
             if (resEntity != null) {
-                Log.i("RESPONSE",EntityUtils.toString(resEntity));
+                Log.i("RESPONSE", EntityUtils.toString(resEntity));
                 cajaDeTexto.setText(EntityUtils.toString(resEntity));
             }
         } catch (Exception e) {
